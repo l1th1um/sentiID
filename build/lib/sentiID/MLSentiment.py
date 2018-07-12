@@ -26,7 +26,8 @@ class MLSentiment():
 		self.file_mdl = pkg_resources.resource_filename('sentiID','data/ensemble_model.pk')
 		self.file_sw = pkg_resources.resource_filename('sentiID','data/stopwords_id.txt')
 		self.file_emo = pkg_resources.resource_filename('sentiID','data/sentiment_emotions.txt')
-
+		self.cat_telco = pkg_resources.resource_filename('sentiID','data/ensemble_model_telco.pk')
+		self.cat_generic = pkg_resources.resource_filename('sentiID','data/ensemble_model_0618.pk')
 
 	###Preprocess tweets
 	def processTweet2(self,tweet):
@@ -99,8 +100,14 @@ class MLSentiment():
 
 	#Predict the sentiment
 
-	def predict(self,tweet):   
-		classifier = pickle.load(open(self.file_mdl, 'rb'))
+	def predict(self, tweet, category = 'common'):
+		if category == 'telco' :
+			classifier = pickle.load(open(self.cat_telco, 'rb'))
+		elif category == 'generic' :
+			classifier = pickle.load(open(self.cat_generic, 'rb'))
+		else :
+			classifier = pickle.load(open(self.file_mdl, 'rb'))
+
 		processedTweet = self.processTweet2(str(tweet))
 		stopwords = self.getStopWordList()
 		featureVector = self.getFeatureVector(processedTweet, stopwords)

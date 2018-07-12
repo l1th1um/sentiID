@@ -13,6 +13,10 @@ sentiID.egg-info/not-zip-safe
 sentiID.egg-info/requires.txt
 sentiID.egg-info/top_level.txt
 sentiID/data/ensemble_model.pk
+sentiID/data/ensemble_model_0618.pk
+sentiID/data/ensemble_model_Indomie.pk
+sentiID/data/ensemble_model_Menaker.pk
+sentiID/data/ensemble_model_telco.pk
 sentiID/data/olshop_negative_testing.csv
 sentiID/data/olshop_negative_training.csv
 sentiID/data/olshop_positive_testing.csv

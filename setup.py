@@ -5,7 +5,7 @@ def readme():
         return f.read()
 
 setup(name='sentiID',
-      version='1.0.0',
+      version='1.0.1',
       description='NLP Toolkit for Indonesian Languange - Sentiment Analysus',
       long_description=readme(),
       url='http://git.informatika.lipi.go.id/gitlab/idnlp',
