@@ -1,0 +1,10 @@
+.DS_Store
+/build
+/sentiID.egg-info
+/sentiID/data/old_model
+/sentiID/data/*.json
+/sentiID/data/*.pk
+/sentiID/data/*.h5
+/sentiID/__pycache__
+/sentiID/.DS_Store
+/dist/*.egg

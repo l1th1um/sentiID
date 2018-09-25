@@ -11,3 +11,13 @@ Methods: Ensemble method (Voting Approach) of SVM, Multinomial Naive Bayes, Logi
 >>> from sentiID import MLSentiment
 >>> mysenti =MLSentiment()
 >>> mysenti.predict("Sentence to predict")
+
+## Update 1.0.3
+- Category : Added More Category
+
+## Update 1.0.2
+- Category : Telco (Update), fnb, mie, snack
+
+## Update 1.0.1
+- Added Category for Model
+- Category : Telco, Generic

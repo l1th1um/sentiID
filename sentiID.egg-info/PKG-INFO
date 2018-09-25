@@ -1,7 +1,7 @@
 Metadata-Version: 1.0
 Name: sentiID
-Version: 1.0.1
-Summary: NLP Toolkit for Indonesian Languange - Sentiment Analysus
+Version: 1.0.3
+Summary: NLP Toolkit for Indonesian Languange - Sentiment Analysis
 Home-page: http://git.informatika.lipi.go.id/gitlab/idnlp
 Author: p2i
 Author-email: info@informatika.lipi.go.id
@@ -20,4 +20,11 @@ Description: Sentiment Analysis for Indonesian Language, developed and maintain 
         >>> mysenti =MLSentiment()
         >>> mysenti.predict("Sentence to predict")
         
+        
+        ## Update 1.0.2
+        - Category : Telco (Update), fnb, mie, snack
+        
+        ## Update 1.0.1
+        - Added Category for Model
+        - Category : Telco, Generic
 Platform: UNKNOWN

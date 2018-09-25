@@ -24,10 +24,55 @@ class MLSentiment():
 
 	def __init__(self):
 		self.file_mdl = pkg_resources.resource_filename('sentiID','data/ensemble_model.pk')
+
 		self.file_sw = pkg_resources.resource_filename('sentiID','data/stopwords_id.txt')
 		self.file_emo = pkg_resources.resource_filename('sentiID','data/sentiment_emotions.txt')
 		self.cat_telco = pkg_resources.resource_filename('sentiID','data/ensemble_model_telco.pk')
+		self.cat_fnb = pkg_resources.resource_filename('sentiID','data/ensemble_model_fnb.pk')
 		self.cat_generic = pkg_resources.resource_filename('sentiID','data/ensemble_model_0618.pk')
+
+		'''
+		self.en_xpander =  pkg_resources.resource_filename('sentiID','data/ensemble_model_Xpander.pk')
+		self.en_XL =  pkg_resources.resource_filename('sentiID','data/ensemble_model_XL.pk')
+		self.en_telkomsel =  pkg_resources.resource_filename('sentiID','data/ensemble_model_Telkomsel.pk')
+		self.en_telco =  pkg_resources.resource_filename('sentiID','data/ensemble_model_Telco.pk')
+		self.en_snack =  pkg_resources.resource_filename('sentiID','data/ensemble_model_Snack.pk')
+		self.en_sarimi =  pkg_resources.resource_filename('sentiID','data/ensemble_model_Sarimi.pk')
+		self.en_misc =  pkg_resources.resource_filename('sentiID','data/ensemble_model_Misc.pk')
+		self.en_mie =  pkg_resources.resource_filename('sentiID','data/ensemble_model_Mie.pk')
+		self.en_menaker =  pkg_resources.resource_filename('sentiID','data/ensemble_model_Menaker.pk')
+		self.en_lays =  pkg_resources.resource_filename('sentiID','data/ensemble_model_Lays.pk')
+		self.en_indosat =  pkg_resources.resource_filename('sentiID','data/ensemble_model_Indosat.pk')
+		self.en_indomilk =  pkg_resources.resource_filename('sentiID','data/ensemble_model_Indomilk.pk')
+		self.en_indomie =  pkg_resources.resource_filename('sentiID','data/ensemble_model_Indomie.pk')
+		self.en_indomaret =  pkg_resources.resource_filename('sentiID','data/ensemble_model_Indomaret.pk')
+		self.en_fnb =  pkg_resources.resource_filename('sentiID','data/ensemble_model_FnB.pk')
+		self.en_doritos =  pkg_resources.resource_filename('sentiID','data/ensemble_model_Doritos.pk')
+		self.en_bni46 =  pkg_resources.resource_filename('sentiID','data/ensemble_model_BNI46.pk')
+		self.en_all =  pkg_resources.resource_filename('sentiID','data/ensemble_model_all.pk')
+		'''
+
+		self.category = {
+			'xpander' : pkg_resources.resource_filename('sentiID','data/ensemble_model_Xpander.pk'),
+			'xl' : pkg_resources.resource_filename('sentiID','data/ensemble_model_XL.pk'),
+			'telkomsel' : pkg_resources.resource_filename('sentiID','data/ensemble_model_Telkomsel.pk'),
+			'telco' : pkg_resources.resource_filename('sentiID','data/ensemble_model_Telco.pk'),
+			'snack' : pkg_resources.resource_filename('sentiID','data/ensemble_model_Snack.pk'),
+			'sarimi' : pkg_resources.resource_filename('sentiID','data/ensemble_model_Sarimi.pk'),
+			'misc' : pkg_resources.resource_filename('sentiID','data/ensemble_model_Misc.pk'),
+			'mie' : pkg_resources.resource_filename('sentiID','data/ensemble_model_Mie.pk'),
+			'menaker' : pkg_resources.resource_filename('sentiID','data/ensemble_model_Menaker.pk'),
+			'lays' : pkg_resources.resource_filename('sentiID','data/ensemble_model_Lays.pk'),
+			'indosat' : pkg_resources.resource_filename('sentiID','data/ensemble_model_Indosat.pk'),
+			'indomilk' : pkg_resources.resource_filename('sentiID','data/ensemble_model_Indomilk.pk'),
+			'indomie' : pkg_resources.resource_filename('sentiID','data/ensemble_model_Indomie.pk'),
+			'indomaret' : pkg_resources.resource_filename('sentiID','data/ensemble_model_Indomaret.pk'),
+			'fnb' : pkg_resources.resource_filename('sentiID','data/ensemble_model_FnB.pk'),
+			'doritos' : pkg_resources.resource_filename('sentiID','data/ensemble_model_Doritos.pk'),
+			'bni46' : pkg_resources.resource_filename('sentiID','data/ensemble_model_BNI46.pk'),
+			'all' : pkg_resources.resource_filename('sentiID','data/ensemble_model_all.pk')
+		}
+
 
 	###Preprocess tweets
 	def processTweet2(self,tweet):
@@ -100,13 +145,12 @@ class MLSentiment():
 
 	#Predict the sentiment
 
-	def predict(self, tweet, category = 'common'):
-		if category == 'telco' :
-			classifier = pickle.load(open(self.cat_telco, 'rb'))
-		elif category == 'generic' :
-			classifier = pickle.load(open(self.cat_generic, 'rb'))
+	def predict(self, tweet, category = 'all'):
+		if category in self.category:
+			classifier = pickle.load(open(self.category[category], 'rb'))
 		else :
-			classifier = pickle.load(open(self.file_mdl, 'rb'))
+			raise Exception("Category Not Found")
+			#classifier = pickle.load(open(self.category['all'], 'rb'))
 
 		processedTweet = self.processTweet2(str(tweet))
 		stopwords = self.getStopWordList()
