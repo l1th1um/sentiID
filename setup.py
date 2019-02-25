@@ -18,8 +18,11 @@ setup(name='sentiID',
       install_requires=[
           'numpy==1.13.3',
           'pandas==0.21.0',
+          'python-dateutil==2.6.1',
+          'pytz==2017.3',
           'scikit-learn==0.19.0',
           'scipy==1.0.0',
+          'six==1.11.0',
           'sklearn==0.0'
       ],
       zip_safe=False)
