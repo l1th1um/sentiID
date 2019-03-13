@@ -8,3 +8,7 @@
 /sentiID/__pycache__
 /sentiID/.DS_Store
 /dist/*.egg
+/list
+.vscode
+
+!/sentiID/data/ensemble_model_all.pk
